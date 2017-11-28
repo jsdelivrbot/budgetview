@@ -1,0 +1,191 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+    <meta name="description" content="" />
+    <meta name="author" content="" />
+    <!--[if IE]>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+        <![endif]-->
+    <title>ระบบบริหารงบประมาณเชิงพื้นที่</title>
+    <!-- BOOTSTRAP CORE STYLE  -->
+    <link href="assets/css/bootstrap.css" rel="stylesheet" />
+    <!-- FONT AWESOME ICONS  -->
+    <link href="assets/css/font-awesome.css" rel="stylesheet" />
+    <!-- CUSTOM STYLE  -->
+    <link href="assets/css/style.css" rel="stylesheet" />
+     <!-- HTML5 Shiv and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]--> <script language=Javascript>
+        function Inint_AJAX() {
+            try {
+                return new ActiveXObject("Msxml2.XMLHTTP");
+            } catch (e) {}
+            try {
+                return new ActiveXObject("Microsoft.XMLHTTP");
+            } catch (e) {}
+            try {
+                return new XMLHttpRequest();
+            } catch (e) {}
+            alert("XMLHttpRequest not supported");
+            return null;
+        };
+
+        function dochange(src, val) {
+            var req = Inint_AJAX();
+            req.onreadystatechange = function() {
+                if (req.readyState == 4) {
+                    if (req.status == 200) {
+                        document.getElementById(src).innerHTML = req.responseText;
+                    }
+                }
+            };
+            req.open("GET", "location.php?data=" + src + "&val=" + val);
+            req.send(null);
+        }
+
+        window.onLoad = dochange('prov_name1', -1);
+    </script>
+</head>
+<body>
+    <!-- HEADER END-->
+    <div class="navbar navbar-inverse set-radius-zero">
+        <div class="container">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+            </div>
+
+            <div class="left-div">
+                <div class="user-settings-wrapper">
+                    <ul class="nav">
+
+                        <li class="dropdown">
+                        </li>
+
+
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- LOGO HEADER END-->
+   
+    <!-- MENU SECTION END-->
+    <div class="content-wrapper">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    <h4 class="page-head-line">กรุณา Log in ก่อนเข้าใช้งาน</h4>
+
+                </div>
+
+            </div>
+            <div class="row">
+                <div class="col-md-6">
+                    <center><img src="assets/img/900.jpg" alt="" width="85%"></center>
+                       
+
+                </div>
+                <div class="col-md-6">
+                    <div class="alert alert-warning">
+
+
+                     <form class="login-form" action="checklogin.php">        
+                           
+                      
+                        <label>Enter E-Mail : </label>
+                            <input type="text" class="form-control" name="email_user" />
+                        <label>Enter Password :  </label>
+                            <input type="password" class="form-control" name="pass_user" />
+                        <hr />
+                        <button type="submit" class="btn btn-warning"><span class="glyphicon glyphicon-user"></span> &nbsp;เข้าสู่ระบบ </button>
+                        <a data-toggle="collapse" class="btn btn-warning" data-target="#reg">สร้างบัญชีผู้ใช้งานใหม่</a><hr>
+
+                    </form>  
+
+
+                        <div id="reg" class="collapse" >
+                            <form action="logins.php" method="post">
+                              <fieldset>
+                                <h4 class="page-head-line">ลงทะเบียนใหม่</h4>
+                                <div class="form-group col-md-6">
+                                  <label for="exampleInputPassword1">ชื่อ </label>
+                                  <input type="text" class="form-control"  placeholder="" name="name_user" required>
+                                </div>
+                                <div class="form-group  col-md-6" >
+                                  <label for="exampleInputPassword1">นามสกุล</label>
+                                  <input type="text" class="form-control"  placeholder="" name="last_user" required>
+                                </div>
+                                <div class="form-group">
+                                  <label for="exampleInputPassword1">เบอร์โทรศัพท์</label>
+                                  <input type="number" class="form-control"  placeholder="" name="phone_user" required>  
+                                </div>
+                                <div class="form-group">
+                                  <label for="exampleInputPassword1">ชื่อหน่วยงาน</label>
+                                  <input type="text" class="form-control"  placeholder="" name="office_user" required>  
+                                </div>
+                                <div class="form-group">
+                                    <label for="exampleInputPassword1">เลือกจังหวัด</label>
+                                  <span id="prov_name1">
+                                        <select class="form-control" id="select" data-cip-id="cIPJQ342845642">
+                                           <option value='%'>- เลือกจังหวัด -</option>
+                                        </select>
+                                    </span> 
+                                </div>
+                                <div class="form-group">
+                                  <label for="exampleInputPassword1">เลือกอำเภอ</label>
+                                  <span id="amphoe_name1">
+                                        <select class="form-control" id="select" data-cip-id="cIPJQ342845642">
+                                            <option value=''>- เลือกอำเภอ -</option>
+                                        </select>
+                                    </span>
+                                </div>
+                                <div class="form-group">
+                                  <label for="exampleInputPassword1">E-Mail</label>
+                                  <input type="email" class="form-control"  placeholder=""  name="email_user"required>  
+                                  <small id="emailHelp" class="form-text text-muted">E-Mail ใช้ในการเข้าสู่ระบบ</small>
+                                </div>
+                                <div class="form-group">
+                                  <label for="exampleInputPassword1">รหัสผ่าน</label>
+                                  <input type="password" class="form-control"  placeholder=""  name="pass_user" required>
+                                </div>
+                                <button type="submit" class="btn btn-primary" onclick="return confirm('ยืนยันการบันทึก?')">สร้างบัญชีผู้ใช้งาน</button>
+                              </fieldset>
+                            </form>
+                        </div>   
+
+
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+    <!-- CONTENT-WRAPPER SECTION END-->
+    <footer>
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    <img src="https://upload.wikimedia.org/wikipedia/th/thumb/1/15/NU_Logo.png/200px-NU_Logo.png" alt="" width="3%">
+                    <img src="http://www.cgistln.nu.ac.th/gistweb_2013/images/logo_gistv1.png" alt="" width="10%"> พัฒนาโดย สถานภูมิภาคเทคโนโลยีอวกาศและภูมิสารสนเทศ ภาคเหนือตอนล่าง และมหาวิทยาลัยนเรศวร
+                </div>
+
+            </div>
+        </div>
+    </footer>
+    <!-- FOOTER SECTION END-->
+    <!-- JAVASCRIPT AT THE BOTTOM TO REDUCE THE LOADING TIME  -->
+    <!-- CORE JQUERY SCRIPTS -->
+    <script src="assets/js/jquery-1.11.1.js"></script>
+    <!-- BOOTSTRAP SCRIPTS  -->
+    <script src="assets/js/bootstrap.js"></script>
+</body>
+</html>
