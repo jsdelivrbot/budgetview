@@ -32,8 +32,6 @@ $("#pwa_water").click(function(event) {
 
 });
 
-
-
 var pl_reservoir_pointv = L.control({
     position: 'bottomright'
 });
@@ -65,15 +63,6 @@ $("#pl_reservoir_point").click(function(event) {
         pl_reservoir_pointv.addTo(map);
    }
 });
-
-
-
-
-
-
-
-
-
 
 
 var streamv = L.control({
@@ -176,8 +165,6 @@ map.removeControl(waterbodyv);
 waterbodyv.addTo(map);
    }
 });
-
-
 
 
 var irr_areav = L.control({
@@ -1105,10 +1092,6 @@ svegetablev.addTo(map);
 });
 
 
-
-
-
-
 var srubberv = L.control({
     position: 'bottomright'
 });
@@ -1141,16 +1124,11 @@ srubberv.addTo(map);
 });
 
 
-
-
-
-
-
 var villagev = L.control({
     position: 'bottomright'
 });
 villagev.onAdd = function(map) {
-    var src = "http://www.gistnu.com/geoserver/wms?REQUEST=GetLegendGraphic&VERSION=1.0.0&FORMAT=image%2Fpng&WIDTH=20&STYLE=village&HEIGHT=20&LAYER=phs:village&transparent=TRUE";
+    var src = "http://www.gistnu.com/geoserver/wms?REQUEST=GetLegendGraphic&VERSION=1.0.0&FORMAT=image%2Fpng&WIDTH=20&STYLE=village&HEIGHT=20&LAYER=phs:village&transparent=TRUE&legend_options=forceLabels:on";
     var div = L.DomUtil.create('div', 'info legend');
     div.innerHTML += '<img src="' + src + '"/>';
     return div;
@@ -1177,10 +1155,129 @@ villagev.addTo(map);
    }
 });
 
+var ttv = L.control({
+  position: 'bottomright'
+});
+ttv.onAdd = function(map) {
+  var src = "http://www.gistnu.com/geoserver/wms?REQUEST=GetLegendGraphic&VERSION=1.0.0&FORMAT=image%2Fpng&WIDTH=20&STYLE=&HEIGHT=20&LAYER=tt&transparent=TRUE&legend_options=forceLabels:on;forceTitles:off";
+  var div = L.DomUtil.create('div', 'info legend');
+  div.innerHTML += '<img src="' + src + '"/>';
+  return div;
+};
+
+var tt = L.tileLayer.wms("http://www.gistnu.com/geoserver/ows?", { 
+layers: "tt",
+transparent: true, 
+format: 'image/png' 
+});
+$("#tt").click(function(event) {
+  event.preventDefault();
+  if(map.hasLayer(tt)) {
+    document.getElementById("tt").style.color = "";
+      $(this).removeClass('tt');
+      map.removeLayer(tt);
+map.removeControl(ttv);
+  } else {
+    document.getElementById("tt").style.color = "green";
+      map.addLayer(tt);        
+      $(this).addClass('selected');
+      ttv.addTo(map);
+ }
+});
+
+var healv = L.control({
+  position: 'bottomright'
+});
+healv.onAdd = function(map) {
+  var src = "http://www.gistnu.com/geoserver/wms?REQUEST=GetLegendGraphic&VERSION=1.0.0&FORMAT=image%2Fpng&WIDTH=20&STYLE=&HEIGHT=20&LAYER=heal&transparent=TRUE&legend_options=forceLabels:on;forceTitles:off";
+  var div = L.DomUtil.create('div', 'info legend');
+  div.innerHTML += '<img src="' + src + '"/>';
+  return div;
+};
+
+var heal = L.tileLayer.wms("http://www.gistnu.com/geoserver/ows?", { 
+layers: "heal",
+transparent: true, 
+format: 'image/png' 
+});
+$("#heal").click(function(event) {
+  event.preventDefault();
+  if(map.hasLayer(heal)) {
+    document.getElementById("heal").style.color = "";
+      $(this).removeClass('heal');
+      map.removeLayer(heal);
+map.removeControl(healv);
+  } else {
+    document.getElementById("heal").style.color = "green";
+      map.addLayer(heal);        
+      $(this).addClass('selected');
+      healv.addTo(map);
+ }
+});
 
 
+var water_body5pv = L.control({
+  position: 'bottomright'
+});
+water_body5pv.onAdd = function(map) {
+  var src = "http://www.gistnu.com/geoserver/wms?REQUEST=GetLegendGraphic&VERSION=1.0.0&FORMAT=image%2Fpng&WIDTH=20&STYLE=&HEIGHT=20&LAYER=phs:water_body5p&transparent=TRUE";
+  var div = L.DomUtil.create('div', 'info legend');
+  div.innerHTML += '<img src="' + src + '"/>';
+  return div;
+};
+
+var water_body5p = L.tileLayer.wms("http://www.gistnu.com/geoserver/ows?", { 
+layers: "phs:water_body5p",
+styles:'waterbody_5p', 
+transparent: true, 
+format: 'image/png' 
+});
+$("#water_body5p").click(function(event) {
+  event.preventDefault();
+  if(map.hasLayer(waterbody)) {
+    document.getElementById("water_body5p").style.color = "";
+      $(this).removeClass('selected');
+      map.removeLayer(water_body5p);
+map.removeControl(water_body5pv);
+  } else {
+    document.getElementById("water_body5p").style.color = "green";
+      map.addLayer(water_body5p);        
+      $(this).addClass('selected');
+      water_body5pv.addTo(map);
+ }
+});
 
 
+var school5pv = L.control({
+  position: 'bottomright'
+});
+school5pv.onAdd = function(map) {
+  var src = "http://www.gistnu.com/geoserver/wms?REQUEST=GetLegendGraphic&VERSION=1.0.0&FORMAT=image%2Fpng&WIDTH=20&STYLE=&HEIGHT=20&LAYER=phs:school5p&transparent=TRUE&legend_options=forceLabels:on";
+  var div = L.DomUtil.create('div', 'info legend');
+  div.innerHTML += '<img src="' + src + '"/>';
+  return div;
+};
+
+var school5p = L.tileLayer.wms("http://www.gistnu.com/geoserver/ows?", { 
+layers: "phs:school5p",
+styles:'school5p', 
+transparent: true, 
+format: 'image/png' 
+});
+$("#school5p").click(function(event) {
+  event.preventDefault();
+  if(map.hasLayer(school5p)) {
+    document.getElementById("school5p").style.color = "";
+      $(this).removeClass('school5p');
+      map.removeLayer(school5p);
+map.removeControl(school5pv);
+  } else {
+    document.getElementById("school5p").style.color = "green";
+      map.addLayer(school5p);        
+      $(this).addClass('selected');
+      school5pv.addTo(map);
+ }
+});
 
 
 

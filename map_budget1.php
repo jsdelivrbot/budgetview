@@ -140,15 +140,16 @@ $type_project = $_GET[type_project];
                   <li class="breadcrumb-item active"><a id="geojson" class="btn btn-link">ชั้นข้อมูลโครงการ</a></li>
                   <li class="breadcrumb-item active">
                       <div class="btn-group show-on-hover">
-                          <a class="btn btn-link" data-toggle="dropdown" href="#">แหล่งน้ำ
+                          <a class="btn btn-link" data-toggle="dropdown" href="#">น้ำ
                           <span class="caret"></span></a>
                           <ul class="dropdown-menu" role="menu">
                             <li><a id="pwa_water" class="btn btn-link" />แหล่งน้ำประปา</a></li>
-                            <li><a id="pl_reservoir_point" class="btn btn-link">อ่างเก็บน้ำ</a></li>
-                            <li><a id="stream" class="btn btn-link">เส้นลำน้ำ</a></li>
-                            <li><a id="pl_wshdcls" class="btn btn-link">ชั้นคุณภาพลุ่มน้ำ</a></li>
+                      <!--  <li><a id="pl_reservoir_point" class="btn btn-link">อ่างเก็บน้ำ</a></li> -->
+                            <li><a id="water_body5p" class="btn btn-link">แหล่งน้ำ</a></li>
                             <li><a id="waterbody" class="btn btn-link">แหล่งน้ำธรรมชาติ</a></li>
                             <li><a id="irr_area" class="btn btn-link">ชลประทาน</a></li>
+                            <li><a id="stream" class="btn btn-link">เส้นลำน้ำ</a></li>
+                            <li><a id="pl_wshdcls" class="btn btn-link">ชั้นคุณภาพลุ่มน้ำ</a></li>
                             <li><a id="basin50k" class="btn btn-link">ขอบเขตลุ่มน้ำ</a></li>
                           </ul>
                         </div>
@@ -160,7 +161,7 @@ $type_project = $_GET[type_project];
                         <ul class="dropdown-menu" role="menu">
                           <li><a id="building" class="btn btn-link">อาคารในเขตเทศบาล</a></li>
                           <li><a id="treasury_build" class="btn btn-link">แปลงราชพัสดุ</a></li>
-                          <li><a id="alro_parcel" class="btn btn-link">แปลงที่ดิน สปก.</a></li>
+                          <li><a id="alro_parcel" class="btn btn-link">แปลงที่ดิน ส.ป.ก.</a></li>
                           <li><a id="nsl_parcel" class="btn btn-link">ที่สาธารณะประโยชน์</a></li>
                         </ul>
                     </div>
@@ -201,16 +202,59 @@ $type_project = $_GET[type_project];
                         <span class="caret"></span></a>
                         <ul class="dropdown-menu">
                           <li><a id="village" class="btn btn-link">ที่ตั้งหมู่บ้าน</a></li>
-                          <li><a id="supermaket" class="btn btn-link">ห้างสรรพสินค้า</a></li>
-                          <li><a id="temple" class="btn btn-link">วัด</a></li>
-                          <li><a id="factory" class="btn btn-link">โรงงาน</a></li>
+                          <li><a id="tt" class="btn btn-link">วัดและโรงเรียน</a></li>
+                          <li><a id="heal" class="btn btn-link">สถานพยาบาล</a></li>
+                    <!--  <li><a id="temple" class="btn btn-link">วัด</a></li>
                           <li><a id="hospital" class="btn btn-link">โรงพยาบาล</a></li>
                           <li><a id="public_health" class="btn btn-link">สำนักงานสาธารณสุข</a></li>
                           <li><a id="hcenter" class="btn btn-link">ศูนย์สุขภาพ</a></li>
-                          <li><a id="hospital_sub" class="btn btn-link">รพสต.</a></li>
+                          <li><a id="hospital_sub" class="btn btn-link">รพสต.</a></li> -->
+                          <li><a id="factory" class="btn btn-link">โรงงาน</a></li>
+                          <li><a id="supermaket" class="btn btn-link">ห้างสรรพสินค้า</a></li>
                         </ul>  
                     </div>
                   </li>
+                <!--  <li class="breadcrumb-item active">
+                    <div class="btn-group show-on-hover">
+                        <a class="dropdown-toggle" data-toggle="dropdown" href="#">ประชากร
+                        <span class="caret"></span></a>
+                        <ul class="dropdown-menu">
+                          <li><a id="soilgroup" class="btn btn-link">กลุ่มดิน</a></li>
+     
+                        </ul>  
+                    </div>
+                  </li>
+                  <li class="breadcrumb-item active">
+                    <div class="btn-group show-on-hover">
+                        <a class="dropdown-toggle" data-toggle="dropdown" href="#">ข้อมูลพื้นฐาน
+                        <span class="caret"></span></a>
+                        <ul class="dropdown-menu">
+                          <li><a id="soilgroup" class="btn btn-link">กลุ่มดิน</a></li>
+     
+                        </ul>  
+                    </div>
+                  </li>
+                  <li class="breadcrumb-item active">
+                    <div class="btn-group show-on-hover">
+                        <a class="dropdown-toggle" data-toggle="dropdown" href="#">ภูมิอากาศ
+                        <span class="caret"></span></a>
+                        <ul class="dropdown-menu">
+                          <li><a id="soilgroup" class="btn btn-link">กลุ่มดิน</a></li>
+     
+                        </ul>  
+                    </div>
+                  </li>
+                  <li class="breadcrumb-item active">
+                    <div class="btn-group show-on-hover">
+                        <a class="dropdown-toggle" data-toggle="dropdown" href="#">ภัยธรรมชาติ
+                        <span class="caret"></span></a>
+                        <ul class="dropdown-menu">
+                          <li><a id="soilgroup" class="btn btn-link">กลุ่มดิน</a></li>
+     
+                        </ul>  
+                    </div>
+                  </li> -->
+
                 </ol>
 
 
