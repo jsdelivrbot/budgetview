@@ -17,11 +17,12 @@ $strpg = "SELECT * FROM user_id  WHERE email_user = '".$_SESSION['email_user']."
 
     else if($status != "admin_gistnu")
     {
-        header('Location: login.html');
+        header('Location: ../login.html');
         exit();
     }
 
 $region = $_GET[region];
+$re_osm  = $_GET[re_osm];
 $prov_name  = $_GET[prov_name];
 $amphoe_name  = $_GET[amphoe_name];
 $tambon_name  = $_GET[tambon_name];
@@ -274,6 +275,7 @@ $type_project = $_GET[type_project];
                         and prov_name like '%$prov_name' 
                         and amp_name like '%$amphoe_name' 
                         and tam_name like '%$tambon_name' 
+                        and re_osm like '%$re_osm' 
                          
                         and strategic20 like '%$strategic20'
                         and substrategic20 like '%$substrategic20'
@@ -419,6 +421,7 @@ $type_project = $_GET[type_project];
               where 
               re_royin like '%$region' 
               and pv_tn like '%$prov_name' 
+               and re_osm like '%$re_osm' 
               
               
               group by prov_name,geom;               
@@ -450,6 +453,7 @@ $type_project = $_GET[type_project];
               where 
               re_royin like '%$region' 
               and pv_tn like '%$prov_name' 
+               and re_osm like '%$re_osm' 
               
               
               group by prov_name,geom;  
@@ -476,7 +480,10 @@ $type_project = $_GET[type_project];
               select prov_name ,amp_name,amp_name as name_text,prov_name,count(*) as count,count(*) as total,ST_AsGeoJSON(geom) AS geojson 
               from a
               inner join amphoe_sim on a.amp_name = amphoe_sim.ap_tn and a.prov_name = amphoe_sim.pv_tn
-              where re_royin like '%$region' and pv_tn like '%$prov_name' and ap_tn like '%$amphoe_name'
+              where re_royin like '%$region' 
+              and pv_tn like '%$prov_name' 
+               and re_osm like '%$re_osm' 
+              and ap_tn like '%$amphoe_name'
               group by prov_name,amp_name,geom;     
                ";
               }elseif ($prov_name != '' and $amphoe_name != '' and $tambon_name != '') {
@@ -502,7 +509,11 @@ $type_project = $_GET[type_project];
               inner join tambon_sim on a.tam_name = tambon_sim.tb_tn 
               and a.amp_name = tambon_sim.ap_tn 
               and a.prov_name = tambon_sim.pv_tn
-              where re_royin like '%$region' and pv_tn like '%$prov_name'  and ap_tn like '%$amphoe_name' and tb_tn like '%$tambon_name' 
+              where re_royin like '%$region' 
+              and pv_tn like '%$prov_name'  
+              and ap_tn like '%$amphoe_name' 
+              and tb_tn like '%$tambon_name' 
+               and re_osm like '%$re_osm' 
               group by prov_name,amp_name,tam_name,geom; ";
               }
 
@@ -522,6 +533,7 @@ inner join province_sim on area_project.prov_name = province_sim.pv_tn
 inner join user_id on budget_view2.user_id = user_id.user_id
           where province_sim.re_royin like '%$region' 
               and pv_tn like '%$prov_name' 
+               and re_osm like '%$re_osm' 
                
               
               and strategic20 like '%$strategic20'
@@ -544,6 +556,7 @@ inner join province_sim on area_project.prov_name = province_sim.pv_tn
 inner join user_id on budget_view2.user_id = user_id.user_id
           where province_sim.re_royin like '%$region' 
               and pv_tn like '%$prov_name' 
+               and re_osm like '%$re_osm' 
                
               
               and strategic20 like '%$strategic20'
@@ -567,6 +580,7 @@ group by prov_name,geom; ";
               where amphoe_sim.re_royin like '%$region' 
               and pv_tn like '%$prov_name' 
               and ap_tn like '%$amphoe_name'
+               and re_osm like '%$re_osm' 
                
               
               and strategic20 like '%$strategic20'
@@ -593,6 +607,7 @@ group by prov_name,geom; ";
               and pv_tn like '%$prov_name' 
               and ap_tn like '%$amphoe_name'
               and tb_tn like '%$tambon_name' 
+               and re_osm like '%$re_osm' 
                
               
               and strategic20 like '%$strategic20'
@@ -663,7 +678,8 @@ from c
 inner join province_sim on c.prov_name = province_sim.pv_tn
  where 
 re_royin like '%$region' 
-and pv_tn like '%$prov_name' 
+and pv_tn like '%$prov_name'
+               and re_osm like '%$re_osm'  
 group by prov_name,geom,total
 ";
               }elseif ($prov_name != '' and $amphoe_name == '') {
@@ -715,6 +731,7 @@ inner join province_sim on c.prov_name = province_sim.pv_tn
  where 
 re_royin like '%$region' 
 and pv_tn like '%$prov_name' 
+               and re_osm like '%$re_osm' 
 group by prov_name,geom,total
               ";
               }elseif ($prov_name != '' and $amphoe_name != '' and $tambon_name == '') {
@@ -766,6 +783,7 @@ inner join amphoe_sim on c.prov_name = amphoe_sim.pv_tn and c.amp_name = amphoe_
 where re_royin like '%$region' 
 and pv_tn like '%$prov_name' 
 and ap_tn like '%$amphoe_name' 
+               and re_osm like '%$re_osm' 
 group by prov_name,geom,total,ap_tn
               
               ";
@@ -819,6 +837,7 @@ where re_royin like '%$region'
 and pv_tn like '%$prov_name' 
 and ap_tn like '%$amphoe_name' 
 and tb_tn like '%$tambon_name'
+               and re_osm like '%$re_osm' 
 group by tb_tn,prov_name,geom,total,ap_tn
               
               ";
@@ -859,6 +878,7 @@ group by tb_tn,prov_name,geom,total,ap_tn
               where 
               re_royin like '%$region' 
               and pv_tn like '%$prov_name' 
+               and re_osm like '%$re_osm' 
               
               
               group by prov_name,geom;               
@@ -890,6 +910,7 @@ group by tb_tn,prov_name,geom,total,ap_tn
               where 
               re_royin like '%$region' 
               and pv_tn like '%$prov_name' 
+               and re_osm like '%$re_osm' 
               
               
               group by prov_name,geom;  
@@ -917,6 +938,7 @@ group by tb_tn,prov_name,geom,total,ap_tn
               from a
               inner join amphoe_sim on a.amp_name = amphoe_sim.ap_tn and a.prov_name = amphoe_sim.pv_tn
               where re_royin like '%$region' and pv_tn like '%$prov_name' 
+               and re_osm like '%$re_osm' 
               group by prov_name,amp_name,geom;     
                ";
               }elseif ($prov_name != '' and $amphoe_name != '' and $tambon_name != '') {
@@ -943,6 +965,7 @@ group by tb_tn,prov_name,geom,total,ap_tn
               and a.amp_name = tambon_sim.ap_tn 
               and a.prov_name = tambon_sim.pv_tn
               where re_royin like '%$region' and pv_tn like '%$prov_name'  and ap_tn like '%$amphoe_name' and tb_tn like '%$tambon_name' 
+               and re_osm like '%$re_osm' 
               group by prov_name,amp_name,tam_name,geom; ";
               }
 
@@ -1322,12 +1345,10 @@ select project_group,sub_project_group from  budget_view2
 full join area_project on budget_view2.prj_id = area_project.id_project
 where 
  prov_name like '%$prov_name'
+               and re_osm like '%$re_osm' 
 and re_royin like '%$region' 
 and amp_name like '%$amphoe_name'
 and tam_name like '%$tambon_name' 
-
-
-
 
 and strategic20 like '%$strategic20'
 and substrategic20 like '%$substrategic20'
@@ -1352,6 +1373,7 @@ select project_group,sub_project_group from  budget_view2
 full join area_project on budget_view2.prj_id = area_project.id_project
 where 
  prov_name like '%$prov_name' 
+               and re_osm like '%$re_osm' 
 and re_royin like '%$region' 
 and amp_name like '%$amphoe_name' 
 and tam_name like '%$tambon_name' 
@@ -1380,6 +1402,7 @@ select project_group,sub_project_group from  budget_view2
 full join area_project on budget_view2.prj_id = area_project.id_project
 where 
  prov_name like '%$prov_name' 
+               and re_osm like '%$re_osm' 
 and re_royin like '%$region' 
 and amp_name like '%$amphoe_name' 
 and tam_name like '%$tambon_name' 
@@ -1437,6 +1460,7 @@ select project_group,sub_project_group from  budget_view2
 full join area_project on budget_view2.prj_id = area_project.id_project
 where 
  prov_name like '%$prov_name' 
+               and re_osm like '%$re_osm' 
 and re_royin like '%$region' 
 and amp_name like '%$amphoe_name' 
 and tam_name like '%$tambon_name' 
@@ -1465,6 +1489,7 @@ select project_group,sub_project_group from  budget_view2
 full join area_project on budget_view2.prj_id = area_project.id_project
 where 
  prov_name like '%$prov_name' 
+               and re_osm like '%$re_osm' 
 and re_royin like '%$region' 
 and amp_name like '%$amphoe_name' 
 and tam_name like '%$tambon_name' 
@@ -1493,6 +1518,7 @@ select substrategic  from  budget_view2
 full join area_project on budget_view2.prj_id = area_project.id_project
 where 
  prov_name like '%$prov_name' 
+               and re_osm like '%$re_osm' 
 and re_royin like '%$region' 
 and amp_name like '%$amphoe_name' 
 and tam_name like '%$tambon_name' 
@@ -1566,6 +1592,7 @@ select strategic20,substrategic20 from  budget_view2
 full join area_project on budget_view2.prj_id = area_project.id_project
 where 
  prov_name like '%$prov_name' 
+               and re_osm like '%$re_osm' 
 and re_royin like '%$region' 
 and amp_name like '%$amphoe_name' 
 and tam_name like '%$tambon_name' 
@@ -1596,6 +1623,7 @@ select strategic20,substrategic20 from  budget_view2
 full join area_project on budget_view2.prj_id = area_project.id_project
 where 
  prov_name like '%$prov_name' 
+               and re_osm like '%$re_osm' 
 and re_royin like '%$region' 
 and amp_name like '%$amphoe_name' 
 and tam_name like '%$tambon_name' 
@@ -1624,6 +1652,7 @@ select strategic20,substrategic20 from  budget_view2
 full join area_project on budget_view2.prj_id = area_project.id_project
 where 
  prov_name like '%$prov_name' 
+               and re_osm like '%$re_osm' 
 and re_royin like '%$region' 
 and amp_name like '%$amphoe_name' 
 and tam_name like '%$tambon_name' 
@@ -1682,6 +1711,7 @@ full join area_project on budget_view2.prj_id = area_project.id_project
 where 
  prov_name like '%$prov_name' 
 and re_royin like '%$region' 
+               and re_osm like '%$re_osm' 
 and amp_name like '%$amphoe_name' 
 and tam_name like '%$tambon_name' 
 
@@ -1712,6 +1742,7 @@ full join area_project on budget_view2.prj_id = area_project.id_project
 where 
  prov_name like '%$prov_name' 
 and re_royin like '%$region' 
+               and re_osm like '%$re_osm' 
 and amp_name like '%$amphoe_name' 
 and tam_name like '%$tambon_name' 
 
@@ -1740,6 +1771,7 @@ full join area_project on budget_view2.prj_id = area_project.id_project
 where 
  prov_name like '%$prov_name' 
 and re_royin like '%$region' 
+               and re_osm like '%$re_osm' 
 and amp_name like '%$amphoe_name' 
 and tam_name like '%$tambon_name' 
 
@@ -1813,6 +1845,7 @@ select economic_plan,economic_target from  budget_view2
 full join area_project on budget_view2.prj_id = area_project.id_project
 where 
  prov_name like '%$prov_name' 
+               and re_osm like '%$re_osm' 
 and re_royin like '%$region' 
 and amp_name like '%$amphoe_name' 
 and tam_name like '%$tambon_name' 
@@ -1843,6 +1876,7 @@ select economic_plan,economic_target from  budget_view2
 full join area_project on budget_view2.prj_id = area_project.id_project
 where 
  prov_name like '%$prov_name' 
+               and re_osm like '%$re_osm' 
 and re_royin like '%$region' 
 and amp_name like '%$amphoe_name' 
 and tam_name like '%$tambon_name' 
@@ -1871,6 +1905,7 @@ select economic_measure,economic_target from  budget_view2
 full join area_project on budget_view2.prj_id = area_project.id_project
 where 
  prov_name like '%$prov_name' 
+               and re_osm like '%$re_osm' 
 and re_royin like '%$region' 
 and amp_name like '%$amphoe_name' 
 and tam_name like '%$tambon_name' 
@@ -1929,6 +1964,7 @@ full join area_project on budget_view2.prj_id = area_project.id_project
 where 
  prov_name like '%$prov_name' 
 and re_royin like '%$region' 
+               and re_osm like '%$re_osm' 
 and amp_name like '%$amphoe_name' 
 and tam_name like '%$tambon_name' 
 
@@ -1958,6 +1994,7 @@ select economic_plan,economic_target from  budget_view2
 full join area_project on budget_view2.prj_id = area_project.id_project
 where 
  prov_name like '%$prov_name' 
+               and re_osm like '%$re_osm' 
 and re_royin like '%$region' 
 and amp_name like '%$amphoe_name' 
 and tam_name like '%$tambon_name' 
@@ -1987,6 +2024,7 @@ full join area_project on budget_view2.prj_id = area_project.id_project
 where 
  prov_name like '%$prov_name' 
 and re_royin like '%$region' 
+               and re_osm like '%$re_osm' 
 and amp_name like '%$amphoe_name' 
 and tam_name like '%$tambon_name' 
 
@@ -2055,6 +2093,7 @@ select integration_29,integration_target from  budget_view2
 full join area_project on budget_view2.prj_id = area_project.id_project
 where 
  prov_name like '%$prov_name' 
+               and re_osm like '%$re_osm' 
 and re_royin like '%$region' 
 and amp_name like '%$amphoe_name' 
 and tam_name like '%$tambon_name' 
@@ -2086,6 +2125,7 @@ full join area_project on budget_view2.prj_id = area_project.id_project
 where 
  prov_name like '%$prov_name' 
 and re_royin like '%$region' 
+               and re_osm like '%$re_osm' 
 and amp_name like '%$amphoe_name' 
 and tam_name like '%$tambon_name' 
 
@@ -2115,6 +2155,7 @@ full join area_project on budget_view2.prj_id = area_project.id_project
 where 
  prov_name like '%$prov_name' 
 and re_royin like '%$region' 
+               and re_osm like '%$re_osm' 
 and amp_name like '%$amphoe_name' 
 and tam_name like '%$tambon_name' 
 
@@ -2172,6 +2213,7 @@ full join area_project on budget_view2.prj_id = area_project.id_project
 where 
  prov_name like '%$prov_name' 
 and re_royin like '%$region' 
+               and re_osm like '%$re_osm' 
 and amp_name like '%$amphoe_name' 
 and tam_name like '%$tambon_name' 
 
@@ -2202,6 +2244,7 @@ full join area_project on budget_view2.prj_id = area_project.id_project
 where 
  prov_name like '%$prov_name' 
 and re_royin like '%$region' 
+               and re_osm like '%$re_osm' 
 and amp_name like '%$amphoe_name' 
 and tam_name like '%$tambon_name' 
 
@@ -2230,6 +2273,7 @@ full join area_project on budget_view2.prj_id = area_project.id_project
 where 
  prov_name like '%$prov_name' 
 and re_royin like '%$region' 
+               and re_osm like '%$re_osm' 
 and amp_name like '%$amphoe_name' 
 and tam_name like '%$tambon_name' 
 
@@ -2334,6 +2378,7 @@ if ($check != 2) {
               from a
               inner join province_sim on a.prov_name = province_sim.pv_tn
               where re_royin like '%$region' and pv_tn like '%$prov_name' 
+               and re_osm like '%$re_osm' 
               group by prov_name,geom;      ");
       }elseif ($prov_name != '' and $amphoe_name == '') {
      $result1 = pg_query(" with a as (
@@ -2356,6 +2401,7 @@ if ($check != 2) {
               from a
               inner join amphoe_sim on a.amp_name = amphoe_sim.ap_tn and a.prov_name = amphoe_sim.pv_tn
               where re_royin like '%$region' and pv_tn like '%$prov_name' 
+               and re_osm like '%$re_osm' 
               group by prov_name,amp_name,geom ;");
       }elseif ($prov_name != '' and $amphoe_name != '' and $tambon_name == '') {
      $result1 = pg_query("with a as (
@@ -2380,6 +2426,7 @@ if ($check != 2) {
               and a.amp_name = tambon_sim.ap_tn 
               and a.prov_name = tambon_sim.pv_tn
               where re_royin like '%$region' and pv_tn like '%$prov_name'  and ap_tn like '%$amphoe_name'
+               and re_osm like '%$re_osm' 
               group by prov_name,amp_name,tam_name,geom;");
       }elseif ($prov_name != '' and $amphoe_name != '' and $tambon_name != '') {
      $result1 = pg_query("with a as (
@@ -2404,6 +2451,7 @@ if ($check != 2) {
               and a.amp_name = tambon_sim.ap_tn 
               and a.prov_name = tambon_sim.pv_tn
               where re_royin like '%$region' and pv_tn like '%$prov_name'  and ap_tn like '%$amphoe_name' and tb_tn like '%$tambon_name' 
+               and re_osm like '%$re_osm' 
               group by prov_name,amp_name,tam_name,geom; ");
       } 
 
@@ -2420,6 +2468,7 @@ inner join province_sim on area_project.prov_name = province_sim.pv_tn
 inner join user_id on budget_view2.user_id = user_id.user_id
           where province_sim.re_royin like '%$region' 
               and pv_tn like '%$prov_name' 
+               and re_osm like '%$re_osm' 
                
               
               
@@ -2443,6 +2492,7 @@ group by prov_name,geom;");
               where amphoe_sim.re_royin like '%$region' 
               and pv_tn like '%$prov_name' 
               and ap_tn like '%$amphoe_name'
+               and re_osm like '%$re_osm' 
                
               
               
@@ -2469,6 +2519,7 @@ group by prov_name,geom;");
               and pv_tn like '%$prov_name' 
               and ap_tn like '%$amphoe_name'
               and tb_tn like '%$tambon_name' 
+               and re_osm like '%$re_osm' 
                
               
               
@@ -2494,6 +2545,7 @@ group by prov_name,geom;");
               and pv_tn like '%$prov_name' 
               and ap_tn like '%$amphoe_name'
               and tb_tn like '%$tambon_name' 
+               and re_osm like '%$re_osm' 
                
               
               
@@ -2567,6 +2619,7 @@ if ($check != 2) {
               from a
               inner join province_sim on a.prov_name = province_sim.pv_tn
               where re_royin like '%$region' and pv_tn like '%$prov_name' 
+               and re_osm like '%$re_osm' 
               group by prov_name,geom;      ");
       }elseif ($prov_name != '' and $amphoe_name == '') {
      $result1 = pg_query(" with a as (
@@ -2589,6 +2642,7 @@ if ($check != 2) {
               from a
               inner join amphoe_sim on a.amp_name = amphoe_sim.ap_tn and a.prov_name = amphoe_sim.pv_tn
               where re_royin like '%$region' and pv_tn like '%$prov_name' 
+               and re_osm like '%$re_osm' 
               group by prov_name,amp_name,geom ;");
       }elseif ($prov_name != '' and $amphoe_name != '' and $tambon_name == '') {
      $result1 = pg_query("with a as (
@@ -2613,6 +2667,7 @@ if ($check != 2) {
               and a.amp_name = tambon_sim.ap_tn 
               and a.prov_name = tambon_sim.pv_tn
               where re_royin like '%$region' and pv_tn like '%$prov_name'  and ap_tn like '%$amphoe_name'
+               and re_osm like '%$re_osm' 
               group by prov_name,amp_name,tam_name,geom;");
       }elseif ($prov_name != '' and $amphoe_name != '' and $tambon_name != '') {
      $result1 = pg_query("with a as (
@@ -2637,6 +2692,7 @@ if ($check != 2) {
               and a.amp_name = tambon_sim.ap_tn 
               and a.prov_name = tambon_sim.pv_tn
               where re_royin like '%$region' and pv_tn like '%$prov_name'  and ap_tn like '%$amphoe_name' and tb_tn like '%$tambon_name' 
+               and re_osm like '%$re_osm' 
               group by prov_name,amp_name,tam_name,geom; ");
       } 
 
@@ -2653,6 +2709,7 @@ inner join province_sim on area_project.prov_name = province_sim.pv_tn
 inner join user_id on budget_view2.user_id = user_id.user_id
           where province_sim.re_royin like '%$region' 
               and pv_tn like '%$prov_name' 
+               and re_osm like '%$re_osm' 
                
               
               
@@ -2676,6 +2733,7 @@ group by prov_name,geom; ");
               where amphoe_sim.re_royin like '%$region' 
               and pv_tn like '%$prov_name' 
               and ap_tn like '%$amphoe_name'
+               and re_osm like '%$re_osm' 
                
               
               
@@ -2702,6 +2760,7 @@ group by prov_name,geom; ");
               and pv_tn like '%$prov_name' 
               and ap_tn like '%$amphoe_name'
               and tb_tn like '%$tambon_name' 
+               and re_osm like '%$re_osm' 
                
               
               
@@ -2726,6 +2785,7 @@ group by prov_name,geom; ");
                where tambon_sim.re_royin like '%$region' 
               and pv_tn like '%$prov_name' 
               and ap_tn like '%$amphoe_name'
+               and re_osm like '%$re_osm' 
               and tb_tn like '%$tambon_name' 
                
               

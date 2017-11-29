@@ -8,7 +8,7 @@ include('config.php');
 
 
 
-	 $data = $_GET['data'];
+   $data = $_GET['data'];
     $val = $_GET['val'];
 
 
@@ -39,18 +39,25 @@ include('config.php');
 
 
 
-		
+    
           if ($data=='region') { 
-              echo "<select name='region' class='form-control' onChange=\"dochange('prov_name', this.value),this.form.submit()\">";
+              echo "<select name='region' class='form-control' onChange=\"dochange('re_osm', this.value),this.form.submit()\">";
               echo "<option value=''>- เลือกทุกภูมิภาค -</option>\n";
               $result=pg_query("SELECT re_royin from province_sim GROUP BY re_royin order by re_royin asc");
               while($row = pg_fetch_array($result)){
                    echo "<option value=\"$row[re_royin]\" >$row[re_royin]</option>" ;
               }
+         } else if ($data=='re_osm') { 
+              echo "<select name='re_osm' class='form-control' onChange=\"dochange('prov_name', this.value),this.form.submit()\">";
+              echo "<option value=''>- เลือกทุกเขต -</option>\n";
+              $result=pg_query("SELECT re_osm from province_sim WHERE re_royin= '$val' GROUP BY re_osm  order by re_osm asc;");
+              while($row = pg_fetch_array($result)){
+                   echo "<option value=\"$row[re_osm]\" >$row[re_osm]</option>" ;
+              }
          } else if ($data=='prov_name') { 
               echo "<select name='prov_name' class='form-control' onChange=\"dochange('amphoe_name', this.value),this.form.submit()\">";
               echo "<option value=''>- เลือกทุกจังหวัด -</option>\n";
-              $result=pg_query("SELECT pv_tn,pv_code from province_sim WHERE re_royin= '$val' GROUP BY pv_tn,pv_code  order by pv_tn asc;");
+              $result=pg_query("SELECT pv_tn,pv_code from province_sim WHERE re_osm= '$val' GROUP BY pv_tn,pv_code  order by pv_tn asc;");
               while($row = pg_fetch_array($result)){
                    echo "<option value=\"$row[pv_tn]\" >$row[pv_tn]</option>" ;
               }
@@ -73,28 +80,28 @@ include('config.php');
 
           if ($data=='region2') { 
               echo "<select name='region2' class='form-control' onChange=\"dochange('prov_name2', this.value),this.form.submit()\">";
-              echo "<option value=''>- เลือกภูมิภาค -</option>\n";
+              echo "<option value=''>- เลือกทุกภูมิภาค -</option>\n";
               $result=pg_query("SELECT re_royin from province_sim GROUP BY re_royin order by re_royin asc");
               while($row = pg_fetch_array($result)){
                    echo "<option value=\"$row[re_royin]\" >$row[re_royin]</option>" ;
               }
          } else if ($data=='prov_name2') { 
               echo "<select name='prov_name2' class='form-control' onChange=\"dochange('amphoe_name2', this.value),this.form.submit()\">";
-              echo "<option value=''>- เลือกจังหวัด -</option>\n";
+              echo "<option value=''>- เลือกทุกจังหวัด -</option>\n";
               $result=pg_query("SELECT pv_tn,pv_code from province_sim WHERE re_royin= '$val' GROUP BY pv_tn,pv_code  order by pv_tn asc;");
               while($row = pg_fetch_array($result)){
                    echo "<option value=\"$row[pv_tn]\" >$row[pv_tn]</option>" ;
               }
          } else if ($data=='amphoe_name2') {
               echo "<select name='amphoe_name2' class='form-control' onChange=\"dochange('tambon_name2', this.value),this.form.submit()\">";
-              echo "<option value=''>- เลือกอำเภอ -</option>\n";                             
+              echo "<option value=''>- เลือกทุกอำเภอ -</option>\n";                             
               $result=pg_query("SELECT ap_tn,ap_code FROM amphoe_sim WHERE pv_tn= '$val' GROUP BY ap_tn,ap_code");
               while($row = pg_fetch_array($result)){
                    echo "<option value=\"$row[ap_tn]\" >$row[ap_tn]</option> " ;
               }
          } else if ($data=='tambon_name2') {
               echo "<select class='form-control' name='tambon_name' onChange=\"this.form.submit()\">\n";
-              echo "<option value=''>- เลือกตำบล -</option>\n";
+              echo "<option value=''>- เลือกทุกตำบล -</option>\n";
               $result=pg_query("SELECT tb_tn,tb_code FROM tambon_sim WHERE ap_tn = '$val' GROUP BY tb_tn,tb_code");
               while($row = pg_fetch_array($result)){
                    echo "<option value=\"$row[tb_tn]\" >$row[tb_tn]</option> \n" ;
@@ -239,7 +246,7 @@ include('config.php');
     
           if ($data=='all_group') { 
               echo "<select name='type_project' class='form-control'  onChange=\"dochange('project_group', this.value),this.form.submit()\" >";
-              echo "<option value=''>- เลือกโครงการทุกประเภท -</option>\n";
+              echo "<option value=''>โครงการทุกประเภท</option>\n";
               echo "<option value='r'>โครงการระดับภาค</option>\n";
               echo "<option value='p'>โครงการระดับจังหวัด</option>\n";
               
@@ -260,8 +267,8 @@ include('config.php');
          } 
 
 
-	
+  
          echo "</select>\n";
-	
+  
    
 ?>  

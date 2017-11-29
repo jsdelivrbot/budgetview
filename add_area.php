@@ -158,6 +158,15 @@ $strpg = "SELECT * FROM user_id  WHERE email_user = '".$_SESSION['email_user']."
                       </div>
 
                       <div class="form-group">
+                        <label for="exampleSelect1">เลือกเขต</label>
+                                    <span id="re_osm">
+                                        <select class="form-control" id="select" data-cip-id="cIPJQ342845642">
+                                           <option value='%'>- เลือกเขต -</option>
+                                        </select>
+                                    </span>
+                      </div>
+
+                      <div class="form-group">
                         <label for="exampleSelect1">เลือกจังหวัด</label>
                                     <span id="prov_name">
                                         <select class="form-control" id="select" data-cip-id="cIPJQ342845642">
@@ -241,8 +250,14 @@ $strpg = "SELECT * FROM user_id  WHERE email_user = '".$_SESSION['email_user']."
                       </tbody>
                   </table>
                 <form action="project_detail.php" method="get" accept-charset="utf-8">
+
+ <?php           
+          $result3 = pg_query("select * from  area_project where id_project = '$idproject' order by id_project asc");
+          $arr3 = pg_fetch_row($result3) ;
+                ?>
+
                     <input type="hidden" name="user" value="<?php echo $id; ?>">
-                    <button type="submit" class="btn btn-success" name="prj" value="<?php echo $idproject; ?>" onclick="return confirm('ยืนยันการบันทึก?')">เสร็จสิ้นการบันทึก</button>
+                    <button type="submit" class="btn btn-success" name="prj" value="<?php echo $idproject; ?>" onclick="return confirm('ยืนยันการบันทึก?')" <?php if ($arr3 == '0') { echo 'disabled' ;} ?> >เสร็จสิ้นการบันทึก</button>
                  
                 </form>
                   

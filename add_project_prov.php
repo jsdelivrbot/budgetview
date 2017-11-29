@@ -91,53 +91,6 @@ $strpg = "SELECT * FROM user_id  WHERE email_user = '".$_SESSION['email_user']."
 
     <style>
    
-
-.stepwizard-step p {
-    margin-top: 10px;
-}
-
-.stepwizard-row {
-    display: table-row;
-}
-
-.stepwizard {
-    display: table;
-    width: 100%;
-    position: relative;
-}
-
-.stepwizard-step button[disabled] {
-    opacity: 1 !important;
-    filter: alpha(opacity=100) !important;
-}
-
-.stepwizard-row:before {
-    top: 14px;
-    bottom: 0;
-    position: absolute;
-    content: " ";
-    width: 100%;
-    height: 1px;
-    background-color: #ccc;
-    z-order: 0;
-
-}
-
-.stepwizard-step {
-    display: table-cell;
-    text-align: center;
-    position: relative;
-}
-
-.btn-circle {
-  width: 30px;
-  height: 30px;
-  text-align: center;
-  padding: 6px 0;
-  font-size: 12px;
-  line-height: 1.428571429;
-  border-radius: 15px;
-}
     </style>
 
 </head>
@@ -197,308 +150,351 @@ $strpg = "SELECT * FROM user_id  WHERE email_user = '".$_SESSION['email_user']."
         <div class="container">
             <div class="row">
 
+
+
 <div class="container">
 
    <legend> <a href="./" class="btn btn-default" > กลับ</a> แบบฟอร์มเพิ่มโครงการแผนบูรณาการส่งเสริมและพัฒนาจังหวัดและกลุ่มจังหวัด</legend>
-<div class="stepwizard">
-    <div class="stepwizard-row setup-panel">
-        <div class="stepwizard-step">
-            <a href="#step-1" type="button" class="btn btn-primary btn-circle">1</a>
-            <p>ขั้นตอนที่ 1</p>
-        </div>
-        <div class="stepwizard-step">
-            <a href="#step-2" type="button" class="btn btn-default btn-circle" disabled="disabled">2</a>
-            <p>ขั้นตอนที่ 2</p>
-        </div>
-        <div class="stepwizard-step">
-            <a href="#step-3" type="button" class="btn btn-default btn-circle" disabled="disabled">3</a>
-            <p>ขั้นตอนที่ 3</p>
-        </div>
-        <div class="stepwizard-step">
-            <a href="#step-4" type="button" class="btn btn-default btn-circle" disabled="disabled">4</a>
-            <p>ขั้นตอนที่ 4</p>
-        </div>
-        <div class="stepwizard-step">
-            <a href="#step-5" type="button" class="btn btn-default btn-circle" disabled="disabled">5</a>
-            <p>ขั้นตอนที่ 5</p>
-        </div>
-    </div>
-</div>
+  <div class="row">
+    <section>
+        <div class="wizard">
+            <div class="wizard-inner">
+                <div class="connecting-line"></div>
+                <ul class="nav nav-tabs" role="tablist">
 
+                    <li role="presentation" class="active">
+                        <a href="#step1" data-toggle="tab" aria-controls="step1" role="tab" title="Step 1">
+                            <span class="round-tab">
+                                <i class="glyphicon glyphicon-folder-open"></i>
+                            </span>
+                        </a>
+                    </li>
 
+                    <li role="presentation" class="disabled">
+                        <a href="#step2" data-toggle="tab" aria-controls="step2" role="tab" title="Step 2">
+                            <span class="round-tab">
+                                <i class="glyphicon glyphicon-pencil"></i>
+                            </span>
+                        </a>
+                    </li>
+                    <li role="presentation" class="disabled">
+                        <a href="#step3" data-toggle="tab" aria-controls="step3" role="tab" title="Step 3">
+                            <span class="round-tab">
+                                <i class="glyphicon glyphicon-picture"></i>
+                            </span>
+                        </a>
+                    </li>
+                    <li role="presentation" class="disabled">
+                        <a href="#step4" data-toggle="tab" aria-controls="step4" role="tab" title="Step 3">
+                            <span class="round-tab">
+                                <i class="glyphicon glyphicon-picture"></i>
+                            </span>
+                        </a>
+                    </li>
+
+                    <li role="presentation" class="disabled">
+                        <a href="#complete" data-toggle="tab" aria-controls="complete" role="tab" title="Complete">
+                            <span class="round-tab">
+                                <i class="glyphicon glyphicon-ok"></i>
+                            </span>
+                        </a>
+                    </li>
+                </ul>
+            </div>
 
 
 
   <form action="assets/add_pro_p.php" method="post" >
+                <div class="tab-content">
 
 
-    <div class="row setup-content" id="step-1">
-        <div class="col-xs-12">
-            <div class="col-md-12"><hr>
-                      <div class="form-group">
-                        <label for="exampleSelect1">เลือกยุทธศาสตร์ชาติ 20 ปี</label>
-                          <span id="strategic20">
-                            <select class="form-control" id="select" data-cip-id="cIPJQ342845642" required="required">
-                              <option value=''>- กรุณาเลือก -</option>
-                            </select>
-                          </span>
-                      </div>
+                    <div class="tab-pane active" role="tabpanel" id="step1">
 
-                      <div class="form-group">
-                        <label for="exampleSelect1">เลือกแนวทางพัฒนา</label>
-                          <span id="substrategic20">
-                            <select class="form-control" id="select" data-cip-id="cIPJQ342845642"  required="required">
-                              <option value=''>- กรุณาเลือก -</option>
-                            </select>
-                          </span>
-                      </div> 
-                <button class="btn btn-primary nextBtn btn-lg pull-right" type="button" >Next</button>
-            </div>
-        </div>
-    </div>
-
-
-
-    <div class="row setup-content" id="step-2">
-        <div class="col-xs-12">
-            <div class="col-md-12"><hr>
-                 <div class="form-group">
-                        <label for="exampleSelect1">แผนพัฒนาเศรษฐกิจและสังคมแห่งชาติฉบับที่ 12 (พ.ศ. 2560-2564) </label>
-                          <span id="economic_plan">
-                            <select class="form-control" id="select" data-cip-id="cIPJQ342845642" required>
-                              <option value=''>- กรุณาเลือก -</option>
-                            </select>
-                          </span>
-                      </div>
-
-                      <div class="form-group">
-                        <label for="exampleSelect1">เป้าหมายการพัฒนา</label>
-                          <span id="economic_target">
-                            <select class="form-control" id="select" data-cip-id="cIPJQ342845642" required>
-                              <option value=''>- กรุณาเลือก -</option>
-                            </select>
-                          </span>
-                      </div> 
-
-                      <div class="form-group">
-                        <label for="exampleSelect1">ตัวชี้วัด</label>
-                          <span id="economic_measure">
-                            <select class="form-control" id="select" data-cip-id="cIPJQ342845642" required>
-                              <option value=''>- กรุณาเลือก -</option>
-                            </select>
-                          </span>
-                      </div>
-                <button class="btn btn-primary nextBtn btn-lg pull-right" type="button" >Next</button>
-            </div>
-        </div>
-    </div>
-
-
-
-
-    <div class="row setup-content" id="step-3">
-        <div class="col-xs-12">
-            <div class="col-md-12"><hr>
-                      <div class="form-group">
-                        <label for="exampleSelect1">แผนงานบูรณาการเชิงยุทธศาสตร์ (29 แผนงาน)</label>
-                          <span id="integration_29">
-                            <select class="form-control" id="select" data-cip-id="cIPJQ342845642" required>
-                              <option value=''>- กรุณาเลือก -</option>
-                            </select>
-                          </span>
-                      </div>
-
-                      <div class="form-group">
-                        <label for="exampleSelect1">เป้าหมายแผนงาน</label>
-                          <span id="integration_target">
-                            <select class="form-control" id="select" data-cip-id="cIPJQ342845642" required>
-                              <option value=''>- กรุณาเลือก -</option>
-                            </select>
-                          </span>
-                      </div> 
-
-                      <div class="form-group">
-                        <label for="exampleSelect1">ตัวชี้วัดเป้าหมาย</label>
-                          <span id="integration_measure">
-                            <select class="form-control" id="select" data-cip-id="cIPJQ342845642" required>
-                              <option value=''>- กรุณาเลือก -</option>
-                            </select>
-                          </span>
-                      </div>
-
-                      <div class="form-group">
-                        <label for="exampleSelect1">ตัวชี้วัดแนวทาง</label>
-                          <span id="integration_how">
-                            <select class="form-control" id="select" data-cip-id="cIPJQ342845642" required>
-                              <option value=''>- กรุณาเลือก -</option>
-                            </select>
-                          </span>
-                      </div>
-                <button class="btn btn-primary nextBtn btn-lg pull-right" type="button" >Next</button>
-            </div>
-        </div>
-    </div>
-
-
-
-
-    <div class="row setup-content" id="step-4">
-        <div class="col-xs-12">
-            <div class="col-md-12"><hr>
-                      
-                     <div class="form-group">
-                        <label for="exampleSelect1">เลือกกลุ่มโครงการ/ผลผลิต</label>
-                              <span id="project_group_p">
-                                        <select class="form-control" id="select" data-cip-id="cIPJQ342845642" >
+                        <div class="col-md-12"><hr>
+                                  <div class="form-group">
+                                    <label for="exampleSelect1">เลือกยุทธศาสตร์ชาติ 20 ปี</label>
+                                      <span id="strategic20">
+                                        <select class="form-control" id="select" data-cip-id="cIPJQ342845642" required="required">
                                           <option value=''>- กรุณาเลือก -</option>
                                         </select>
-                               </span>
-                      </div>
+                                      </span>
+                                  </div>
 
-                      <div class="form-group">
-                        <label for="exampleSelect1">เลือกห่วงโซ่คุณค่า</label>
-                                <span id="sub_project_group_p">
-                                        <select class="form-control" id="select" data-cip-id="cIPJQ342845642" >
+                                  <div class="form-group">
+                                    <label for="exampleSelect1">เลือกแนวทางพัฒนา</label>
+                                      <span id="substrategic20">
+                                        <select class="form-control" id="select" data-cip-id="cIPJQ342845642"  required="required">
                                           <option value=''>- กรุณาเลือก -</option>
                                         </select>
-                               </span>
-                      </div>
-                <button class="btn btn-primary nextBtn btn-lg pull-right" type="button" >Next</button>
-            </div>
-        </div>
-    </div>
+                                      </span>
+                                  </div> 
+                            <ul class="list-inline pull-right">
+                                        <li><button type="button" class="btn btn-primary next-step">Save and continue</button></li>
+                                    </ul>
+                        </div>
+                       
+                    </div>
 
 
-    <div class="row setup-content" id="step-5">
-        <div class="col-xs-12">
-            <div class="col-md-12"><hr>
-
-                     <!-- <div class="form-group">
-                        <label for="exampleSelect1">เลือกยุทธศาสตร์</label>
-                       <span id="strategic3">
-                                        <select class="form-control" id="select" data-cip-id="cIPJQ342845642" >
+                    <div class="tab-pane" role="tabpanel" id="step2">
+                        <div class="col-md-12"><hr>
+                             <div class="form-group">
+                                    <label for="exampleSelect1">แผนพัฒนาเศรษฐกิจและสังคมแห่งชาติฉบับที่ 12 (พ.ศ. 2560-2564) </label>
+                                      <span id="economic_plan">
+                                        <select class="form-control" id="select" data-cip-id="cIPJQ342845642" required>
                                           <option value=''>- กรุณาเลือก -</option>
                                         </select>
+                                      </span>
+                                  </div>
+
+                                  <div class="form-group">
+                                    <label for="exampleSelect1">เป้าหมายการพัฒนา</label>
+                                      <span id="economic_target">
+                                        <select class="form-control" id="select" data-cip-id="cIPJQ342845642" required>
+                                          <option value=''>- กรุณาเลือก -</option>
+                                        </select>
+                                      </span>
+                                  </div> 
+
+                                  <div class="form-group">
+                                    <label for="exampleSelect1">ตัวชี้วัด</label>
+                                      <span id="economic_measure">
+                                        <select class="form-control" id="select" data-cip-id="cIPJQ342845642" required>
+                                          <option value=''>- กรุณาเลือก -</option>
+                                        </select>
+                                      </span>
+                                  </div>
+                            <ul class="list-inline pull-right">
+                                        <li><button type="button" class="btn btn-default prev-step">Previous</button></li>
+                                        <li><button type="button" class="btn btn-primary next-step">Save and continue</button></li>
+                                    </ul>
+                        </div>
+                    </div>
+
+
+
+                    <div class="tab-pane" role="tabpanel" id="step3">
+                      <div class="col-md-12"><hr>
+                                <div class="form-group">
+                                  <label for="exampleSelect1">แผนงานบูรณาการเชิงยุทธศาสตร์ (29 แผนงาน)</label>
+                                    <span id="integration_29">
+                                      <select class="form-control" id="select" data-cip-id="cIPJQ342845642" required>
+                                        <option value=''>- กรุณาเลือก -</option>
+                                      </select>
                                     </span>
-                      </div>
+                                </div>
 
-                      <div class="form-group">
-                        <label for="exampleSelect1">เลือกกลยุทธ์</label>
-                        <span id="substrategic3">
-                                        <select class="form-control" id="select" data-cip-id="cIPJQ342845642" >
-                                          <option value=''>- กรุณาเลือก -</option>
-                                        </select>
+                                <div class="form-group">
+                                  <label for="exampleSelect1">เป้าหมายแผนงาน</label>
+                                    <span id="integration_target">
+                                      <select class="form-control" id="select" data-cip-id="cIPJQ342845642" required>
+                                        <option value=''>- กรุณาเลือก -</option>
+                                      </select>
                                     </span>
-                      </div> -->
+                                </div> 
 
-                        <fieldset class="form-group">
-                        <b>ประเภทโครงการ</b> 
-                          <div class="form-check">
-                            <label class="form-check-label">
-                              <input type="radio" class="form-check-input" name="project_cate" id="optionsRadios1" value="โครงการใหม่" checked="" >
-                              โครงการใหม่
-                            </label>
-                          </div>
-                          <div class="form-check">
-                          <label class="form-check-label">
-                              <input type="radio" class="form-check-input" name="project_cate" id="optionsRadios2" value="โครงการต่อเนื่อง" >
-                              โครงการต่อเนื่อง
-                            </label>
-                          </div>
-                        </fieldset>
+                                <div class="form-group">
+                                  <label for="exampleSelect1">ตัวชี้วัดเป้าหมาย</label>
+                                    <span id="integration_measure">
+                                      <select class="form-control" id="select" data-cip-id="cIPJQ342845642" required>
+                                        <option value=''>- กรุณาเลือก -</option>
+                                      </select>
+                                    </span>
+                                </div>
 
-
-                      <div class="form-group">
-                        <label for="exampleInputEmail1">ชื่อโครงการ</label>
-                        <input type="text" class="form-control" id="" aria-describedby="emailHelp" name="prj_name" placeholder="" required='required'>
+                                <div class="form-group">
+                                  <label for="exampleSelect1">ตัวชี้วัดแนวทาง</label>
+                                    <span id="integration_how">
+                                      <select class="form-control" id="select" data-cip-id="cIPJQ342845642" required>
+                                        <option value=''>- กรุณาเลือก -</option>
+                                      </select>
+                                    </span>
+                                </div>
+                          <ul class="list-inline pull-right">
+                                        <li><button type="button" class="btn btn-default prev-step">Previous</button></li>
+                                        <li><button type="button" class="btn btn-primary next-step">Save and continue</button></li>
+                                    </ul>
                       </div>
+                       
+                    </div>
 
-                      <div class="form-group">
-                        <label for="exampleInputEmail1" >เหตุผลความจำเป็น</label>
-                         <textarea class="form-control" id="exampleTextarea" rows="3" name="reason" required='required'></textarea>
+
+
+                    <div class="tab-pane" role="tabpanel" id="step4">
+                        <div class="col-md-12"><hr>
+                                  
+                                 <div class="form-group">
+                                    <label for="exampleSelect1">เลือกกลุ่มโครงการ/ผลผลิต</label>
+                                          <span id="project_group_p">
+                                                    <select class="form-control" id="select" data-cip-id="cIPJQ342845642" >
+                                                      <option value=''>- กรุณาเลือก -</option>
+                                                    </select>
+                                           </span>
+                                  </div>
+
+                                  <div class="form-group">
+                                    <label for="exampleSelect1">เลือกห่วงโซ่คุณค่า</label>
+                                            <span id="sub_project_group_p">
+                                                    <select class="form-control" id="select" data-cip-id="cIPJQ342845642" >
+                                                      <option value=''>- กรุณาเลือก -</option>
+                                                    </select>
+                                           </span>
+                                  </div>
+                            <ul class="list-inline pull-right">
+                            <li><button type="button" class="btn btn-default prev-step">Previous</button></li>
+                            <li><button type="button" class="btn btn-primary next-step">Save and continue</button></li>
+                        </ul >
+                        </div>
+                    </div>
+
+
+
+
+
+
+                    <div class="tab-pane" role="tabpanel" id="complete">
+                        <div class="col-md-12"><hr>
+
+                               <!-- <div class="form-group">
+                                  <label for="exampleSelect1">เลือกยุทธศาสตร์</label>
+                                 <span id="strategic3">
+                                                  <select class="form-control" id="select" data-cip-id="cIPJQ342845642" >
+                                                    <option value=''>- กรุณาเลือก -</option>
+                                                  </select>
+                                              </span>
+                                </div>
+
+                                <div class="form-group">
+                                  <label for="exampleSelect1">เลือกกลยุทธ์</label>
+                                  <span id="substrategic3">
+                                                  <select class="form-control" id="select" data-cip-id="cIPJQ342845642" >
+                                                    <option value=''>- กรุณาเลือก -</option>
+                                                  </select>
+                                              </span>
+                                </div> -->
+
+                                  <fieldset class="form-group">
+                                  <b>ประเภทโครงการ</b> 
+                                    <div class="form-check">
+                                      <label class="form-check-label">
+                                        <input type="radio" class="form-check-input" name="project_cate" id="optionsRadios1" value="โครงการใหม่" checked="" >
+                                        โครงการใหม่
+                                      </label>
+                                    </div>
+                                    <div class="form-check">
+                                    <label class="form-check-label">
+                                        <input type="radio" class="form-check-input" name="project_cate" id="optionsRadios2" value="โครงการต่อเนื่อง" >
+                                        โครงการต่อเนื่อง
+                                      </label>
+                                    </div>
+                                  </fieldset>
+
+
+                                <div class="form-group">
+                                  <label for="exampleInputEmail1">ชื่อโครงการ</label>
+                                  <input type="text" class="form-control" id="" aria-describedby="emailHelp" name="prj_name" placeholder="" required='required'>
+                                </div>
+
+                                <div class="form-group">
+                                  <label for="exampleInputEmail1" >เหตุผลความจำเป็น</label>
+                                   <textarea class="form-control" id="exampleTextarea" rows="3" name="reason" required='required'></textarea>
+                                </div>
+
+                                <div class="form-group">
+                                  <label for="exampleInputPassword1">วัตถุประสงค์โครงการ</label>
+                                   <textarea class="form-control" id="exampleTextarea" rows="3" name="outcome" required></textarea>
+                                </div>
+
+                                <div class="form-group">
+                                  <label for="exampleInputPassword1">เป้าหมายของโครงการ</label>
+                                   <textarea class="form-control" id="exampleTextarea" rows="3" name="outputs" required></textarea>
+                                </div>
+
+                                <div class="form-group">
+                                  <label for="exampleInputPassword1">กลุ่มเป้าหมายโครงการ</label>
+                                   <textarea class="form-control" id="exampleTextarea" rows="3" name="target" required></textarea>
+                                </div>
+
+                                <div class="form-group">
+                                  <label for="exampleInputPassword1">ผู้ที่มีส่วนได้ส่วนเสีย</label>
+                                  <input type="text" class="form-control" id="" name="who_target" placeholder="" required>
+                                </div>
+
+                                <div class="form-group">
+                                  <label for="exampleInputPassword1">ตัวชี้วัดของเป้าหมาย และตัวชี้วัดผลลัพธ์</label>
+                                   <textarea class="form-control" id="exampleTextarea" rows="3" name="indica_tar" required></textarea>
+                                </div>
+
+                                <div class="form-group">
+                                  <label for="exampleInputPassword1">กิจกรรม -วิธีดำเนินการ</label>
+                                  <input type="text" class="form-control" id="" name="activity" placeholder="" required>
+                                </div>
+
+                                <div class="form-group">
+                                  <label for="exampleInputPassword1">ลักษณะของกิจกรรม</label>
+                                  <input type="text" class="form-control" id="" name="activity_type" placeholder="" required>
+                                </div>
+
+                                <div class="form-group">
+                                  <label for="exampleInputPassword1">ตัวชี้วัดของกิจกรรม</label>
+                                  <input type="text" class="form-control" id="" name="indica_act" placeholder="" required>
+                                </div>
+
+                                <div class="form-group">
+                                  <label for="exampleInputPassword1">ระยะเวลาดำเนินการโครงการ</label>
+                                   <select class="form-control" id="select" data-cip-id="cIPJQ342845642" name="year_project" >
+                                       <option value='2562'>ปีงบประมาณ 2562</option>
+                                       <option value='2563'>ปีงบประมาณ 2563</option>
+                                       <option value='2564'>ปีงบประมาณ 2564</option>
+                                       <option value='2565'>ปีงบประมาณ 2565</option>
+                                       <option value='2566'>ปีงบประมาณ 2566</option>
+                                       <option value='2567'>ปีงบประมาณ 2567</option>
+                                       <option value='2568'>ปีงบประมาณ 2568</option>
+                                       <option value='2569'>ปีงบประมาณ 2569</option>
+                                       <option value='2570'>ปีงบประมาณ 2570</option>
+                                    </select>
+                                </div>
+
+                                <div class="form-group">
+                                  <label for="exampleInputPassword1">งบประมาณ</label>
+                                  <input type="number" class="form-control" id="" name="budget" placeholder="" required>
+                                </div>
+
+                                <div class="form-group">
+                                  <label for="exampleInputPassword1">ชื่อหน่วยงานที่รับผิดชอบ</label>
+                                  <input type="text" class="form-control" id="" name="agency" placeholder="" required>
+                                </div>
+
+                                <div class="form-group">ประโยชน์ที่คาดว่าจะได้รับ</label>
+                                   <textarea class="form-control" id="exampleTextarea" rows="3" name="impact" required></textarea>
+                                </div>
+
+
+                          <input type="hidden" class="form-control" id="" name="user_id" value="<?php echo $user_id; ?>">
+                          <input type="hidden" class="form-control" id="" name="project_type" value="p">
+                          
+                          <ul class="list-inline pull-right">
+                            <li><button type="button" class="btn btn-default prev-step">Previous</button></li>
+                            <li><button class="btn btn-success " type="submit" onclick="return confirm('ยืนยันการบันทึก?')">บันทึกโครงการ</button></li>
+                        </ul >
                       </div>
+                    </div>
+                    <div class="clearfix"></div>
+                </div>
 
-                      <div class="form-group">
-                        <label for="exampleInputPassword1">วัตถุประสงค์โครงการ</label>
-                         <textarea class="form-control" id="exampleTextarea" rows="3" name="outcome" required></textarea>
-                      </div>
-
-                      <div class="form-group">
-                        <label for="exampleInputPassword1">เป้าหมายของโครงการ</label>
-                         <textarea class="form-control" id="exampleTextarea" rows="3" name="outputs" required></textarea>
-                      </div>
-
-                      <div class="form-group">
-                        <label for="exampleInputPassword1">กลุ่มเป้าหมายโครงการ</label>
-                         <textarea class="form-control" id="exampleTextarea" rows="3" name="target" required></textarea>
-                      </div>
-
-                      <div class="form-group">
-                        <label for="exampleInputPassword1">ผู้ที่มีส่วนได้ส่วนเสีย</label>
-                        <input type="text" class="form-control" id="" name="who_target" placeholder="" required>
-                      </div>
-
-                      <div class="form-group">
-                        <label for="exampleInputPassword1">ตัวชี้วัดของเป้าหมาย และตัวชี้วัดผลลัพธ์</label>
-                         <textarea class="form-control" id="exampleTextarea" rows="3" name="indica_tar" required></textarea>
-                      </div>
-
-                      <div class="form-group">
-                        <label for="exampleInputPassword1">กิจกรรม -วิธีดำเนินการ</label>
-                        <input type="text" class="form-control" id="" name="activity" placeholder="" required>
-                      </div>
-
-                      <div class="form-group">
-                        <label for="exampleInputPassword1">ลักษณะของกิจกรรม</label>
-                        <input type="text" class="form-control" id="" name="activity_type" placeholder="" required>
-                      </div>
-
-                      <div class="form-group">
-                        <label for="exampleInputPassword1">ตัวชี้วัดของกิจกรรม</label>
-                        <input type="text" class="form-control" id="" name="indica_act" placeholder="" required>
-                      </div>
-
-                      <div class="form-group">
-                        <label for="exampleInputPassword1">ระยะเวลาดำเนินการโครงการ</label>
-                         <select class="form-control" id="select" data-cip-id="cIPJQ342845642" name="year_project" >
-                             <option value='2562'>ปีงบประมาณ 2562</option>
-                             <option value='2563'>ปีงบประมาณ 2563</option>
-                             <option value='2564'>ปีงบประมาณ 2564</option>
-                             <option value='2565'>ปีงบประมาณ 2565</option>
-                             <option value='2566'>ปีงบประมาณ 2566</option>
-                             <option value='2567'>ปีงบประมาณ 2567</option>
-                             <option value='2568'>ปีงบประมาณ 2568</option>
-                             <option value='2569'>ปีงบประมาณ 2569</option>
-                             <option value='2570'>ปีงบประมาณ 2570</option>
-                          </select>
-                      </div>
-
-                      <div class="form-group">
-                        <label for="exampleInputPassword1">งบประมาณ</label>
-                        <input type="number" class="form-control" id="" name="budget" placeholder="" required>
-                      </div>
-
-                      <div class="form-group">
-                        <label for="exampleInputPassword1">ชื่อหน่วยงานที่รับผิดชอบ</label>
-                        <input type="text" class="form-control" id="" name="agency" placeholder="" required>
-                      </div>
-
-                      <div class="form-group">ประโยชน์ที่คาดว่าจะได้รับ</label>
-                         <textarea class="form-control" id="exampleTextarea" rows="3" name="impact" required></textarea>
-                      </div>
-
-
-                <input type="hidden" class="form-control" id="" name="user_id" value="<?php echo $user_id; ?>">
-                <input type="hidden" class="form-control" id="" name="project_type" value="p">
-                <button class="btn btn-success btn-lg pull-right" type="submit" onclick="return confirm('ยืนยันการบันทึก?')">บันทึกโครงการ</button>
-            </div>
+              </form>
         </div>
-    </div>
-
-
-
-</form>
+    </section>
+   </div>
 </div>
+
+
+
+
+
+
+
+
 
 
 
@@ -611,6 +607,46 @@ $strpg = "SELECT * FROM user_id  WHERE email_user = '".$_SESSION['email_user']."
 
     $('div.setup-panel div a.btn-primary').trigger('click');
 });
+
+
+
+
+
+  $(document).ready(function () {
+    //Initialize tooltips
+    $('.nav-tabs > li a[title]').tooltip();
+    
+    //Wizard
+    $('a[data-toggle="tab"]').on('show.bs.tab', function (e) {
+
+        var $target = $(e.target);
+    
+        if ($target.parent().hasClass('disabled')) {
+            return false;
+        }
+    });
+
+    $(".next-step").click(function (e) {
+
+        var $active = $('.wizard .nav-tabs li.active');
+        $active.next().removeClass('disabled');
+        nextTab($active);
+
+    });
+    $(".prev-step").click(function (e) {
+
+        var $active = $('.wizard .nav-tabs li.active');
+        prevTab($active);
+
+    });
+});
+
+function nextTab(elem) {
+    $(elem).next().find('a[data-toggle="tab"]').click();
+}
+function prevTab(elem) {
+    $(elem).prev().find('a[data-toggle="tab"]').click();
+}
 </script>
 </body>
 

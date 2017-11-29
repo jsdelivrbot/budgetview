@@ -22,7 +22,7 @@ $strpg = "SELECT * FROM user_id  WHERE email_user = '".$_SESSION['email_user']."
 
     else if($status != "user")
     {
-        header('Location: login.html');
+        header('Location: ../login.html');
         exit();
     }
 
